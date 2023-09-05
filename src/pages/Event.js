@@ -8,7 +8,7 @@ const data = useLoaderData();
 
   return (
     <>
-    
+       {/*<EventsList  />*/}
       {<EventsList events={data} />}
     </>
   );
