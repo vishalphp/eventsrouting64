@@ -4,7 +4,9 @@ import EventsList from '../components/EventsList';
 
 function Event() {
 
-const data = useLoaderData();
+//const data = useLoaderData();
+const dataResp = useLoaderData();
+const data = dataResp.events;
 
   return (
     <>
@@ -22,8 +24,9 @@ export async function loader(){
   if (!response.ok) {
     //..
   } else {
-    const resData = await response.json();
-    return resData.events;
+    //const resData = await response.json();
+    //return resData.events;
+    return response;
   }
   
 }
