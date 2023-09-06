@@ -28,6 +28,7 @@ import NewEvent from './pages/NewEvent';
 import EditEvent from './pages/EditEvent';
 import Root from './pages/Root';
 import EventsRoot from './pages/EventsRoot';
+import Error from './pages/Error';
 
 const router = createBrowserRouter([
   {path: '/',
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
        path: 'events',
        element: <EventsRoot />, 
        children: [  
-         {index: true, element: <Event />, loader: EventLoader},
+         {index: true, element: <Event />, errorElement: <Error /> , loader: EventLoader},
          {path: ':eventId', element: <EventDetails />},
          {path: 'new', element: <NewEvent />},
          {path: ':eventId/edit', element: <EditEvent />},

@@ -20,8 +20,11 @@ export default Event;
 
 export async function loader(){
 
-  const response = await fetch('http://localhost:8080/events');
+  const response = await fetch('http://localhost:8080/eventss');
   if (!response.ok) {
+    // eslint-disable-next-line no-throw-literal
+    const msgIn = { message: 'something went wrong ...' };
+    throw new Response( JSON.stringify(msgIn) ,{status: 500});
     //..
   } else {
     //const resData = await response.json();
