@@ -33,6 +33,11 @@ export async function actions({request, params}){
       'Content-Type':'application/json'
     }
   });
+
+  if(response.status === 422){
+   return response;
+  }
+
   if (!response.ok) {
     // eslint-disable-next-line no-throw-literal
     const msgIn = { message: 'something went wrong ...' };
