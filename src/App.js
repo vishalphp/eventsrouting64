@@ -23,13 +23,12 @@ import HomePage from './pages/HomePage';
 // 7. Output the ID of the selected event on the EventDetailPage
 // BONUS: Add another (nested) layout route that adds the <EventNavigation> component above all /events... page components
 import Event, { loader as EventLoader} from './pages/Event'; 
-import EventDetails from './pages/EventDetails';
+import EventDetails, { loader as eventDetailsLoader } from './pages/EventDetails';
 import NewEvent from './pages/NewEvent';
 import EditEvent from './pages/EditEvent';
 import Root from './pages/Root';
 import EventsRoot from './pages/EventsRoot';
 import Error from './pages/Error';
-import { loader as eventDetailsLoader } from './pages/EventDetails';
 
 const router = createBrowserRouter([
   {path: '/',
