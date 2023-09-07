@@ -24,7 +24,7 @@ import HomePage from './pages/HomePage';
 // BONUS: Add another (nested) layout route that adds the <EventNavigation> component above all /events... page components
 import Event, { loader as EventLoader} from './pages/Event'; 
 import EventDetails, { loader as eventDetailsLoader } from './pages/EventDetails';
-import NewEvent from './pages/NewEvent';
+import NewEvent, {actions as newEventAction} from './pages/NewEvent';
 import EditEvent from './pages/EditEvent';
 import Root from './pages/Root';
 import EventsRoot from './pages/EventsRoot';
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
          {path: 'edit', element: <EditEvent />, } 
         ]
        },
-         {path: 'new', element: <NewEvent />},
+         {path: 'new', element: <NewEvent />, action: newEventAction},
        ]
       },
       
