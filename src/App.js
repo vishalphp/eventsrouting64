@@ -49,10 +49,10 @@ const router = createBrowserRouter([
           index: true,
           element: <EventDetails />
          },
-         {path: 'edit', element: <EditEvent />, } 
+         {path: 'edit', element: <EditEvent />, action: newEventAction} 
         ]
        },
-         {path: 'new', element: <NewEvent />, errorElement: <Error />, action: newEventAction},
+         {path: 'new', element: <NewEvent />, action: newEventAction},
        ]
       },
       

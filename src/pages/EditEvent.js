@@ -8,7 +8,7 @@ export default function EditEvent() {
   return (
     <>
     <div>Edit Event</div>
-    <EventForm methodType="put" event={data.event}/>
+    <EventForm methodType="patch" event={data.event}/>
     </>
   )
 }
