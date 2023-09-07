@@ -1,8 +1,8 @@
-import { useNavigate, Form, useActionData } from 'react-router-dom';
+import { useNavigate, Form, useActionData, redirect } from 'react-router-dom';
 
 import classes from './EventForm.module.css';
 
-function EventForm({ method, event }) {
+function EventForm({ methodType, event }) {
 
   const actionData = useActionData();
 
@@ -10,9 +10,11 @@ function EventForm({ method, event }) {
   function cancelHandler() {
     navigate('..');
   }
+ 
+  console.log(methodType);
 
   return (
-    <Form method='post' className={classes.form}>
+    <Form method={methodType} className={classes.form}>
       <ul>{actionData && Object.values(actionData.errors).map(err => <li key={err}>{err}</li>)}</ul>
       <p>
         <label htmlFor="title">Title</label>
@@ -41,3 +43,37 @@ function EventForm({ method, event }) {
 }
 
 export default EventForm;
+
+export async function actions({request, params}){
+
+  const data = await request.formData();
+
+  const eventData = {
+    title: data.get('title'),
+    image: data.get('image'),
+    date: data.get('date'),
+    description: data.get('description')
+  }
+
+  const response = await fetch('http://localhost:8080/events',{
+    method: 'POST',
+    body: JSON.stringify(eventData),
+    headers: {
+      'Content-Type':'application/json'
+    }
+  });
+
+  if(response.status === 422){
+   return response;
+  }
+
+  if (!response.ok) {
+    // eslint-disable-next-line no-throw-literal
+    const msgIn = { message: 'something went wrong ...' };
+    throw new Response( JSON.stringify(msgIn) ,{status: 500});
+    //..
+  }
+
+  return redirect('/events');
+
+}

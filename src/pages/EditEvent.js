@@ -7,8 +7,8 @@ export default function EditEvent() {
 
   return (
     <>
-    <div>EditEvent</div>
-    <EventForm event={data.event}/>
+    <div>Edit Event</div>
+    <EventForm methodType="put" event={data.event}/>
     </>
   )
 }
